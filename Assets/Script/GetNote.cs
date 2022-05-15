@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GetNote : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GetNote : MonoBehaviour
     void Start()
     {
         lifes = GameObject.FindGameObjectsWithTag("life");
-        lifes_cnt = lifes.Length;
+        lifes_cnt = lifes.Length-1;
         Debug.Log(lifes_cnt);
     }
 
@@ -24,11 +25,13 @@ public class GetNote : MonoBehaviour
     {
         if(Note.tag == "Wrong Note") {
             Debug.Log("Get the wrong note");
+            Debug.Log(lifes_cnt);
             if (lifes_cnt == 0) {
                 Debug.Log("You Died");
+                SceneManager.LoadScene(2);
             }
             else {
-                lifes[lifes_cnt - 1].SetActive(false);
+                lifes[lifes_cnt--].SetActive(false);
             }
         }
         Debug.Log(Note.name);
