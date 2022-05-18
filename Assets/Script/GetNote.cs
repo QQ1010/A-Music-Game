@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class GetNote : MonoBehaviour
 {
     static public GameObject[] lifes;
-    static public int lifes_cnt = 2;
+    static public int lifes_cnt = 3;
     // Start is called before the first frame update
     void Start()
     {
-        lifes_cnt = 2;
         lifes = GameObject.FindGameObjectsWithTag("life");
+        lifes_cnt = lifes.Length;
         Debug.Log(lifes_cnt);
     }
 
@@ -33,12 +33,11 @@ public class GetNote : MonoBehaviour
     }
     static public void loss_life()
     {
+        --lifes_cnt;
+        lifes[lifes_cnt].SetActive(false);
         if (lifes_cnt == 0) {
                 Debug.Log("You Died");
                 SceneManager.LoadScene(2);
-        }
-        else {
-            lifes[lifes_cnt--].SetActive(false);
         }
     }
 }
