@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float minPos = -8;
+    public float maxPos = 9;
     Rigidbody2D rb;
     void Start()
     {
