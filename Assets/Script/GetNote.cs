@@ -7,12 +7,13 @@ public class GetNote : MonoBehaviour
 {
     static public GameObject[] lifes;
     static public int lifes_cnt = 3;
+    static public bool WA = false;
     // Start is called before the first frame update
     void Start()
     {
         lifes = GameObject.FindGameObjectsWithTag("life");
         lifes_cnt = lifes.Length;
-        Debug.Log(lifes_cnt);
+        // Debug.Log(lifes_cnt);
     }
 
     // Update is called once per frame
@@ -24,11 +25,12 @@ public class GetNote : MonoBehaviour
     void OnTriggerEnter2D(Collider2D Note) 
     {
         if(Note.tag == "Wrong Note") {
-            Debug.Log("Get the wrong note");
-            Debug.Log(lifes_cnt);
+            WA = true;
+            // Debug.Log("Get the wrong note");
+            // Debug.Log(lifes_cnt);
            loss_life();
         }
-        Debug.Log(Note.name);
+        //Debug.Log(Note.name);
         Destroy(Note.gameObject);
     }
     static public void loss_life()
@@ -36,7 +38,7 @@ public class GetNote : MonoBehaviour
         --lifes_cnt;
         lifes[lifes_cnt].SetActive(false);
         if (lifes_cnt == 0) {
-                Debug.Log("You Died");
+                //Debug.Log("You Died");
                 SceneManager.LoadScene(2);
         }
     }

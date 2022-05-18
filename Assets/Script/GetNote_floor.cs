@@ -19,11 +19,16 @@ public class GetNote_floor : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D Note) 
     {
-        if(Note.tag == "Correct Note") {
+        Debug.Log(GetNote.WA);
+        if(Note.tag == "Correct Note" && GetNote.WA == false) {
             // Debug.Log(lifes_cnt);
             GetNote.loss_life();
         }
-        Debug.Log(Note.name);
+        if(Note.tag == "Correct Note" && GetNote.WA == true)
+        {
+            GetNote.WA = false;
+        }
+        // Debug.Log(Note.name);
         Destroy(Note.gameObject);
     }
 }
