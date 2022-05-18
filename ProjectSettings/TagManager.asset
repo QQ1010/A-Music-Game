@@ -6,6 +6,7 @@ TagManager:
   tags:
   - life
   - Wrong Note
+  - Correct Note
   layers:
   - Default
   - TransparentFX

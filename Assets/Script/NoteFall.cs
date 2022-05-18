@@ -18,6 +18,6 @@ public class NoteFall : MonoBehaviour
     }
 
     void Fall() {
-        transform.Translate(new Vector3(0, -speed,  0) * Time.deltaTime);
+        transform.Translate(new Vector3(0, speed,  0) * Time.deltaTime);
     }
 }

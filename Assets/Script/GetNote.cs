@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GetNote : MonoBehaviour
 {
-    GameObject[] lifes;
-    int lifes_cnt;
+    static public GameObject[] lifes;
+    static public int lifes_cnt = 2;
     // Start is called before the first frame update
     void Start()
     {
         lifes = GameObject.FindGameObjectsWithTag("life");
-        lifes_cnt = lifes.Length-1;
         Debug.Log(lifes_cnt);
     }
 
@@ -26,15 +25,19 @@ public class GetNote : MonoBehaviour
         if(Note.tag == "Wrong Note") {
             Debug.Log("Get the wrong note");
             Debug.Log(lifes_cnt);
-            if (lifes_cnt == 0) {
-                Debug.Log("You Died");
-                SceneManager.LoadScene(2);
-            }
-            else {
-                lifes[lifes_cnt--].SetActive(false);
-            }
+            loss_life();
         }
         Debug.Log(Note.name);
         Destroy(Note.gameObject);
+    }
+    static public void loss_life()
+    {
+        if (lifes_cnt == 0) {
+                Debug.Log("You Died");
+                SceneManager.LoadScene(2);
+        }
+        else {
+            lifes[lifes_cnt--].SetActive(false);
+        }
     }
 }
