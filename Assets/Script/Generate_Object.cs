@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Generate_Object : MonoBehaviour
 {
@@ -16,13 +17,16 @@ public class Generate_Object : MonoBehaviour
     public GameObject[] Q4_objects;
     public GameObject[] Q5_objects;
     public GameObject[] Q6_objects;
+    public GameObject[] Questions;
+
     public Transform[] points;
     public float Ins_time = 3;//先設定成1秒，可以再改
     // public float bpm = 60;
     List<GameObject[]> answers = new List<GameObject[]>();
     List<GameObject[]> objects = new List<GameObject[]>();
-    int question = 0;
+    public int question = 0;
     int note = 0;
+
     void Start()
     {
         answers.Add(Q1_answers);
@@ -47,8 +51,14 @@ public class Generate_Object : MonoBehaviour
     //    Instantiate(objects[Random_Objects],points[Ramdom_Points].transform.position,points[Ramdom_Points].transform.rotation);
         if(note >= answers[question].Length) 
         {
+            Questions[question].SetActive(false);
             ++question;
+            if(question >= Questions.Length)
+            {
+                SceneManager.LoadScene(3);
+            }
             note = 0;
+            Questions[question].SetActive(true);
         }
         int[] random_index = {0,1,2,3,4};
         for(int i = 0; i < 5; ++i) {

@@ -10,6 +10,7 @@ public class GetNote : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lifes_cnt = 2;
         lifes = GameObject.FindGameObjectsWithTag("life");
         Debug.Log(lifes_cnt);
     }
@@ -25,7 +26,7 @@ public class GetNote : MonoBehaviour
         if(Note.tag == "Wrong Note") {
             Debug.Log("Get the wrong note");
             Debug.Log(lifes_cnt);
-            loss_life();
+           loss_life();
         }
         Debug.Log(Note.name);
         Destroy(Note.gameObject);
